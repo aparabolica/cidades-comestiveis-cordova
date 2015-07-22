@@ -136,7 +136,7 @@ angular.module('cc')
 	'$resource',
 	function($q, $http, $resource) {
 
-		var apiUrl = '/api/v1';
+		var apiUrl = 'http://cidadescomestiveis.org/api/v1';
 
 		return {
 			user: $resource(apiUrl + '/users/:id', { id: '@_id' }, {
