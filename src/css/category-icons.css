@@ -1,0 +1,49 @@
+@font-face {
+	font-family: 'category-icons';
+	src:url('../fonts/category-icons.eot?py7yyh');
+	src:url('../fonts/category-icons.eot?#iefixpy7yyh') format('embedded-opentype'),
+		url('../fonts/category-icons.ttf?py7yyh') format('truetype'),
+		url('../fonts/category-icons.woff?py7yyh') format('woff'),
+		url('../fonts/category-icons.svg?py7yyh#category-icons') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="c-icon-"], [class*=" c-icon-"] {
+	font-family: 'category-icons';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.c-icon-conhecimento:before,
+.c-icon-knowledge:before {
+	content: "\e601";
+}
+.c-icon-carrot:before,
+.c-icon-iniciativa:before,
+.c-icon-initiative:before {
+	content: "\e605";
+}
+.c-icon-insumo:before,
+.c-icon-supply:before {
+	content: "\e604";
+}
+.c-icon-ferramentas:before,
+.c-icon-tool:before {
+	content: "\e600";
+}
+.c-icon-trabalho:before,
+.c-icon-work:before {
+	content: "\e602";
+}
+.c-icon-area:before {
+	content: "\e603";
+}

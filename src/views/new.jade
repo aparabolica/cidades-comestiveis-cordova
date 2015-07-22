@@ -1,0 +1,95 @@
+header
+	h2 
+		span(ng-hide="item._id") Adicionar ao mapa!
+		span(ng-show="item._id") Editando item
+form#new-item(ng-submit="save(item)")
+	section#new-item-category(ng-hide="item._id")
+		h3 Selecione a categoria
+		ul.categories
+			li.category-item(ng-repeat="category in categories")
+				a(href="javascript:void(0);" ng-click="selectCategory(category)" ng-class="{selected:category==selectedCategory}")
+					span(class="c-icon-{{category.label}} icon")
+					| {{category.name}}
+
+	section#main-info.clearfix
+
+		.row
+
+			.name-field(ng-show="hasField('name')")
+				p
+					label(for="name_field") Nome
+					input(id="name_field" type="text" ng-model="item.name")
+
+			.description-field(ng-show="hasField('description')")
+				p
+					label(for="description_field") Descrição
+					textarea(id="description_field" ng-model="item.description")
+					
+			.supply-type-field(ng-show="hasField('supply-type')")
+				p
+					label(for="supply_type_field") Tipo de insumo
+					select(id="supply_type_field" ng-model="item.type")
+						option(value="") Selecione um tipo
+						option(value="Composto") Composto
+						option(value="Sementes") Sementes
+						option(value="Mudas") Mudas
+
+			.availability-field(ng-show="hasField('availability')" ng-init="displayAvAtCal = false; displayAvUnCal = false;")
+				p
+					label(for="available_at_field" ng-click="item.availableAt = null; displayAvAtCal = true;") Disponível de 
+						span.value {{formatDate(item.availableAt) || 'indefinido'}} 
+						span.icon-calendar 
+					label(for="available_until_field" ng-click="item.availableUntil = null; displayAvUnCal = true;") até 
+						span.value {{formatDate(item.availableUntil) || 'indefinido'}} 
+						span.icon-calendar
+				.calendar
+					.at(ng-show="!item.availableAt && displayAvAtCal")
+						span.icon-cross(ng-click="displayAvAtCal = false;")
+						datetimepicker#available_at_field(ng-model="item.availableAt" datetimepicker-config="{ startView:'day', minView:'day' }" on-set-time="displayAvAtCal = false;")
+					.until(ng-show="item.availableAt && !item.availableUntil && displayAvUnCal")
+						span.icon-cross(ng-click="displayAvUnCal = false;")
+						datetimepicker#available_until_field(ng-model="item.availableUntil" datetimepicker-config="{ startView:'day', minView:'day' }" on-set-time="displayAvUnCal = false;")
+
+			.website-field(ng-show="hasField('website')")
+				p
+					label(for="website_field") Website
+					input(id="website_field" type="text" ng-model="item.website")
+
+			.facebook-field(ng-show="hasField('facebook')")
+				p
+					label(for="facebook_field") Facebook
+					input(id="facebook_field" type="text" ng-model="item.facebook")
+
+			.has-garden-field(ng-show="hasField('has-garden')")
+				p.checkbox-input
+					input(id="has_garden_field" type="checkbox" ng-model="item.hasGarden")
+					label(for="has_garden_field") Este terreno já possui uma horta
+
+			.access-field(ng-show="hasField('access')")
+				p
+					label(for="access_field") Acesso
+					select(id="access_field" ng-model="item.access")
+						option(value="public") Público
+						option(value="permissive") Com autorização prévia
+						option(value="restricted") Privado
+
+			.address-field(ng-show="hasField('address')")
+				p
+					label(for="address_field") Endereço
+					input(id="address_field" type="text" ng-model="item.address")
+
+			.geometry-field(ng-show="hasField('geometry')").row
+				p
+					label Localização 
+						a.button(href="javascript:void(0);" ng-click="locate()") 
+							span.icon-hair-cross 
+							| Minha localização
+				.center-location-map
+					leaflet#item-geometry(defaults="map.defaults" center="map.center")
+
+			.image-field(ng-show="hasField('image')")
+				p
+					label Imagem
+					input(type="file" fileread="uploadImage")
+
+		input(type="submit" value="Enviar" ng-show="selectedCategory")

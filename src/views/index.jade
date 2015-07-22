@@ -1,0 +1,18 @@
+doctype html
+html(ng-controller="MainCtrl")
+
+	include includes/head
+
+	body(ng-class="{mobile: isMobile}")
+
+		div(ng-include="headerUrl")
+
+		include includes/messages
+
+		.ui-view(autoscroll='false')
+
+		include includes/loading
+
+		div(ng-include="footerUrl")
+
+		include includes/foot

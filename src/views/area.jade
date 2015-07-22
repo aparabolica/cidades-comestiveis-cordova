@@ -1,0 +1,37 @@
+article#area.single-item
+	.image-container.row(ng-show="item.image")
+		img(ng-show="item.image" ng-src="{{item.image.url}}")
+	.content.item-section
+		h3
+			span(class="c-icon-{{item.icon}}") 
+			| Terreno
+		p {{item.description}}
+	.address.item-section
+		p
+			span.label Endereço: 
+			| {{item.address}}
+	.initiatives(ng-show="item.initiatives.length")
+		h3 
+			span.c-icon-initiative 
+			| Iniciativas desse espaço
+		ul.initiative-list
+			li.initiative-item(ng-repeat="initiative in item.initiatives") 
+				| {{initiative.name}}
+				span(ng-show="canEdit(initiative, 'initiative')") 
+					| (
+					a(href="javascript:void(0);" ng-click="unsetIniatitive(initiative, item)") remover
+					| )
+
+	#manage-initiatives(ng-controller="DashboardCtrl" ng-show="user && getItems('initiative').length")
+		form(ng-controller="InitiativeCtrl" ng-submit="addArea(initiative, item)")
+			h3
+				span.c-icon-initiative 
+				label(for="add_initiative_input") Associar sua iniciativa
+			p
+				select(ng-model="initiative")
+					option(ng-repeat="item in getItems('initiative')" ng-value="item._id") {{item.name}}
+				input(type="submit" value="Associar")
+
+	p(ng-show="canEditCurrent")
+		a.button(ui-sref="home.editItem({id: item._id, type: type})") Editar
+		a.button(href="javascript:void(0);" ng-click="delete(item, type)") Remover
