@@ -50,7 +50,7 @@ angular.module('cc')
 	'CCMsgs',
 	function(CC, $http, $window, $q, $cookies, Message, Msgs) {
 
-		var apiUrl = 'http://cidadescomestiveis.org/api/v1';
+		var apiUrl = 'http://www.cidadescomestiveis.org/api/v1';
 
 		$window.auth = '';
 
@@ -136,7 +136,7 @@ angular.module('cc')
 	'$resource',
 	function($q, $http, $resource) {
 
-		var apiUrl = 'http://cidadescomestiveis.org/api/v1';
+		var apiUrl = 'http://www.cidadescomestiveis.org/api/v1';
 
 		return {
 			user: $resource(apiUrl + '/users/:id', { id: '@_id' }, {
