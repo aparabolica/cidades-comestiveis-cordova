@@ -1,3 +1,4 @@
+window.L = require('leaflet');
 window.angular = require('angular');
 window._ = require('underscore');
 window.moment = require('moment');

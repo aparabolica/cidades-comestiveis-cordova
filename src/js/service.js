@@ -321,7 +321,7 @@ angular.module('cc')
 
 		return function(callback, type) {
 			dialog = ngDialog.open({
-				template: '/views/login.html',
+				template: 'views/login.html',
 				controller: ['$scope', 'CCAuth', 'HelloService', function($scope, Auth, HelloService) {
 					$scope.fb = HelloService.facebook;
 					$scope = angular.extend($scope, Auth);
@@ -389,7 +389,7 @@ angular.module('cc')
 
 			dialog = ngDialog.open({
 				overlay: false,
-				template: '/views/new.html',
+				template: 'views/new.html',
 				preCloseCallback: function() {
 					if($state.current.name == 'home.editItem' || $state.current.name == 'home.newItem') {
 						$state.go('home');

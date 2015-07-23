@@ -5,7 +5,7 @@ angular.module('cc')
 
 		return {
 			'area-garden': {
-				iconUrl: '/img/icons/carrot.png',
+				iconUrl: 'img/icons/carrot.png',
 				shadowUrl: false,
 				shadowSize: [0,0],
 				iconSize: [30,42],
@@ -13,7 +13,7 @@ angular.module('cc')
 				popupAnchor: [0,-42]
 			},
 			'area-empty': {
-				iconUrl: '/img/icons/pin.png',
+				iconUrl: 'img/icons/pin.png',
 				shadowUrl: false,
 				shadowSize: [0,0],
 				iconSize: [30,42],

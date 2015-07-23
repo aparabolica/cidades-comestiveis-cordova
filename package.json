@@ -11,6 +11,7 @@
     "angular-leaflet-directive": "^0.7.15",
     "angular-resource": "^1.4.0",
     "angular-ui-router": "^0.2.14",
+    "leaflet": "^0.7.3",
     "browserify": "^9.0.8",
     "browserify-shim": "^3.8.5",
     "dotenv": "^1.1.0",
