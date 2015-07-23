@@ -11,14 +11,12 @@ window.isMobile = true;
 
 require('angular-ui-router');
 require('angular-resource');
-require('angular-cookies');
 require('angular-leaflet-directive');
 require('ng-dialog');
 require('angular-bootstrap-datetimepicker');
 
 var app = angular.module('cc', [
 	'ngDialog',
-	'ngCookies',
 	'ui.router',
 	'ngResource',
 	'leaflet-directive',

@@ -45,17 +45,16 @@ angular.module('cc')
 	'$http',
 	'$window',
 	'$q',
-	'$cookies',
 	'MessageService',
 	'CCMsgs',
-	function(CC, $http, $window, $q, $cookies, Message, Msgs) {
+	function(CC, $http, $window, $q, Message, Msgs) {
 
 		var apiUrl = 'http://www.cidadescomestiveis.org/api/v1';
 
 		$window.auth = '';
 
 		try {
-			$window.auth = JSON.parse($cookies.get('auth'));
+			$window.auth = JSON.parse($window.localStorage.getItem('auth'));
 		} catch(err) {
 			$window.auth = false;
 		}
@@ -117,9 +116,9 @@ angular.module('cc')
 			setToken: function(data) {
 				$window.auth = data;
 				try {
-					$cookies.put('auth', JSON.stringify(data));
+					$window.localStorage.setItem('auth', JSON.stringify(data));
 				} catch(err) {
-					$cookies.remove('auth');
+					$window.localStorage.removeItem('auth');
 				}
 			},
 			getToken: function() {
