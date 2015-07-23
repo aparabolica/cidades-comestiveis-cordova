@@ -24,4 +24,6 @@ $ cordova build
 
 ### Emulando o aplicativo
 
+```
 $ cordova emulate
+```
