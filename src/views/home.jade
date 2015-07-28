@@ -44,8 +44,7 @@
 									| {{getResourceCategory(resource)}} 
 									span.type(ng-show="resource.type") {{resource.type}}
 							p
-								a(ui-sref="home.resource({id: resource._id})")
-									{{resource.description}}
+								a(ui-sref="home.resource({id: resource._id})") {{resource.description}}
 
 	#map-actions
 		.add-new.primary

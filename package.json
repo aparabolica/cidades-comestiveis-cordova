@@ -1,6 +1,6 @@
 {
   "name": "cidades-comestiveis-mobile-app",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "scripts": {
     "postinstall": "mkdir -p www && ./node_modules/.bin/grunt build"
   },
@@ -10,8 +10,6 @@
     "angular-leaflet-directive": "^0.7.15",
     "angular-resource": "^1.4.0",
     "angular-ui-router": "^0.2.14",
-    "ng-dialog": "^0.3.12",
-    "leaflet": "^0.7.3",
     "browserify": "^9.0.8",
     "browserify-shim": "^3.8.5",
     "grunt": "^0.4.5",
@@ -22,7 +20,11 @@
     "grunt-contrib-less": "^1.0.1",
     "grunt-contrib-watch": "^0.6.1",
     "hellojs": "^1.6.0",
+    "leaflet": "^0.7.3",
     "moment": "^2.10.3",
+    "ng-cordova": "^0.1.17-alpha",
+    "ng-cordova-oauth": "nraboy/ng-cordova-oauth#0.1.4",
+    "ng-dialog": "^0.3.12",
     "underscore": "^1.8.3"
   },
   "browser": {
@@ -36,7 +38,7 @@
       "browserify-shim"
     ]
   },
-  "description": "A platform to map initiatives of [urban agriculture].",
+  "description": "A platform to map initiatives of urban agriculture.",
   "repository": {
     "type": "git",
     "url": "https://github.com/codigourbano/cidades-comestiveis-cordova.git"
@@ -52,5 +54,5 @@
   "bugs": {
     "url": "https://github.com/codigourbano/cidades-comestiveis-cordova/issues"
   },
-  "homepage": "https://github.com/codigourbano/cidades-comestiveis-cordova",
+  "homepage": "https://github.com/codigourbano/cidades-comestiveis-cordova"
 }

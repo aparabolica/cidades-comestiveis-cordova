@@ -14,13 +14,16 @@ require('angular-resource');
 require('angular-leaflet-directive');
 require('ng-dialog');
 require('angular-bootstrap-datetimepicker');
+require('ng-cordova');
+require('ng-cordova-oauth/dist/ng-cordova-oauth');
 
 var app = angular.module('cc', [
 	'ngDialog',
 	'ui.router',
 	'ngResource',
 	'leaflet-directive',
-	'ui.bootstrap.datetimepicker'
+	'ui.bootstrap.datetimepicker',
+	'ngCordovaOauth'
 ]);
 
 app.config([

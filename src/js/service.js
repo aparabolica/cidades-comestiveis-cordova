@@ -13,28 +13,34 @@ angular.module('cc')
 .factory('HelloService', [
 	'CCAuth',
 	'$timeout',
-	function(Auth, $timeout) {
+	'$cordovaOauth',
+	function(Auth, $timeout, $cordovaOauth) {
 
 		var callback;
 
 		hello.on('auth.login', function(auth) {
-			if(!Auth.getToken()) {
-				Auth.facebook(auth).then(function() {
-					if(typeof callback == 'function') {
-						$timeout(function() {
-							callback();
-						}, 100);
-					}
-				});
-			}
 		});
 
 		return {
 			facebook: {
 				login: function(cb) {
 					callback = cb;
-					if(!Auth.getToken())
-						hello('facebook').login({scope: 'email,photos'});
+					if(!Auth.getToken()) {
+						$cordovaOauth.facebook('1671515763079566', ['email','photos']).then(function(auth) {
+							console.log(auth);
+							if(!Auth.getToken()) {
+								Auth.facebook(auth).then(function() {
+									if(typeof callback == 'function') {
+										$timeout(function() {
+											callback();
+										}, 100);
+									}
+								});
+							}
+						}, function(err) {
+							console.log(err);
+						});
+					}
 				}
 			}
 		}
