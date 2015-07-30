@@ -13,3 +13,4 @@ header#masthead
 			.nav-content(ng-class="{active: navActive}")
 				a(ui-sref="projeto") O projeto
 				a(ui-sref="manifesto") Manifesto
+				a(href="javascript:void(0);" ng-show="user" ng-click="logout()") Desconectar

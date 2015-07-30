@@ -263,6 +263,7 @@ angular.module('cc')
 			resource: $resource(apiUrl + '/resources/:id', { id: '@_id' }, {
 				query: {
 					method: 'GET',
+					hideMessage: true,
 					isArray: false
 				},
 				update: {
@@ -342,6 +343,8 @@ angular.module('cc')
 							$timeout(function() {
 								$rootScope.$broadcast('cc.loggedin', callback);
 							}, 50);
+						} else {
+							$rootScope.$broadcast('cc.loggedin');
 						}
 					}
 				}

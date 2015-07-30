@@ -252,18 +252,6 @@ app.controller('HomeCtrl', [
 			var southWest = bounds.getSouthWest();
 			var northEast = bounds.getNorthEast();
 			var bbox = {
-				"type": "Polygon",
-				"coordinates": [
-					[
-						[southWest.lng, southWest.lat],
-						[southWest.lng, northEast.lat],
-						[northEast.lng, northEast.lat],
-						[northEast.lng, southWest.lat],
-						[southWest.lng, southWest.lat],
-					]
-				]
-			};
-			bbox = {
 				"coordinates": [
 					[southWest.lat, southWest.lng],
 					[northEast.lat, northEast.lng]
@@ -362,18 +350,16 @@ app.controller('MapCtrl', [
 					map.invalidateSize(true);
 				}, 250);
 			});
-			$scope.$on('leafletDirectiveMarker.mouseover', function(event, args) {
-				args.leafletEvent.target.openPopup();
-				args.leafletEvent.target.setZIndexOffset(1000);
-			});
-
-			$scope.$on('leafletDirectiveMarker.mouseout', function(event, args) {
-				args.leafletEvent.target.closePopup();
-				args.leafletEvent.target.setZIndexOffset(0);
+			$scope.$on('cc.loggedin', function() {
+				setTimeout(function() {
+					map.invalidateSize(true);
+				}, 250);
 			});
 
 			$scope.$on('leafletDirectiveMarker.click', function(event, args) {
 				$state.go('home.' + args.model.object.dataType, { type: args.model.object.dataType, id:  args.model.object._id });
+				event.originalEvent.preventDefault();
+				return false;
 			});
 
 			$scope.$on('leafletDirectiveMap.dragend', function(event, args) {
@@ -794,7 +780,8 @@ app
 		return {
 			request: function(config) {
 
-				config.loadingId = service.add();
+				if(!config.hideMessage)
+					config.loadingId = service.add();
 
 				return config || $q.when(config);
 			},

@@ -1,5 +1,6 @@
 html body.mobile {
 	width: 100%;
+	height: 100%;
 	padding: 0;
 	h1 {
 		font-size: 32px;
@@ -149,7 +150,7 @@ html body.mobile {
 		height: auto;
 		position: absolute;
 		bottom: 0;
-		top: calc(~"100% - 38px");
+		top: calc(~"100% - 8.5vw");
 		z-index: 2;
 		background: #fff;
 		margin: 0;
@@ -162,6 +163,9 @@ html body.mobile {
 			padding-left: 0;
 			.results-header {
 				display: none;
+			}
+			.resource-list {
+				display: block;
 			}
 		}
 		.shrink-button {
@@ -186,7 +190,7 @@ html body.mobile {
 			background: rgba(255,255,255,0.6);
 			h2 {
 				padding: 5px;
-				font-size: 22px;
+				font-size: 4vw;
 				margin: 0;
 				line-height: 100%;
 			}
@@ -198,9 +202,9 @@ html body.mobile {
 			a {
 				width: 1%;
 				display: table-cell;
-				padding: 5px;
-				line-height: 28px;
-				font-size: 18px;
+				padding: 0;
+				line-height: 8vw;
+				font-size: 4vw;
 				text-align: center;
 				border-right: 1px solid #ddd;
 				.count {
@@ -218,6 +222,7 @@ html body.mobile {
 			list-style: none;
 			overflow: auto;
 			height: calc(~"100% - 100px");
+			display: none;
 			.resource-item {
 				margin: 0;
 				padding: 5px 0;
@@ -236,9 +241,13 @@ html body.mobile {
 			top: 0;
 			left: 0;
 			right: 0;
+			height: 100%;
 			z-index: 3;
-			background: #fff;
-			padding: 20px;
+			pointer-events: none;
+			// background: #fff;
+			> * {
+				pointer-events: auto;
+			}
 		}
 	}
 	.ngdialog.ngdialog-theme-default {
@@ -289,7 +298,15 @@ html body.mobile {
 	}
 	.single-item {
 		height: 100%;
+		.box-sizing(border-box);
+		padding: 100px 20px 80px;
 		overflow: auto;
+		background: #fff;
+		.content {
+			p {
+				font-size: 3.5vw;
+			}
+		}
 		#contact {
 			.message-tips {
 				float: none;
@@ -304,6 +321,32 @@ html body.mobile {
 					height: 200px;
 				}
 			}
+		}
+	}
+	.single-page {
+		p {
+			font-size: 5vw;
+		}
+		h2 {
+			font-size: 10vw;
+		}
+		h3 {
+			font-size: 8vw;
+		}
+		#ten-steps {
+			h2 {
+				font-size: 10vw;
+			}
+			ol {
+				li {
+					.count {
+						font-size: 12vw;
+					}
+				}
+			}
+		}
+		#prefeitura h2 {
+			font-size: 10vw;
 		}
 	}
 }
