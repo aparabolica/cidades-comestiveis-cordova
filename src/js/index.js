@@ -358,7 +358,6 @@ app.controller('MapCtrl', [
 
 			$scope.$on('leafletDirectiveMarker.click', function(event, args) {
 				$state.go('home.' + args.model.object.dataType, { type: args.model.object.dataType, id:  args.model.object._id });
-				event.originalEvent.preventDefault();
 				return false;
 			});
 

@@ -26,7 +26,7 @@ angular.module('cc')
 				login: function(cb) {
 					callback = cb;
 					if(!Auth.getToken()) {
-						$cordovaOauth.facebook('1671515763079566', ['email','photos']).then(function(auth) {
+						$cordovaOauth.facebook('600003230102349', ['email','photos']).then(function(auth) {
 							console.log(auth);
 							if(!Auth.getToken()) {
 								Auth.facebook(auth).then(function() {
