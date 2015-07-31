@@ -11,6 +11,17 @@ module.exports = function(grunt) {
 				}
 			}
 		},
+		uglify: {
+			all: {
+				options: {
+					mangle: true,
+					compress: true
+				},
+				files: {
+					'www/js/app.js': 'www/js/app.js',
+				}
+			}
+		},
 		less: {
 			all: {
 				options: {
@@ -86,6 +97,7 @@ module.exports = function(grunt) {
 		}
 	});
 
+	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-less');
 	grunt.loadNpmTasks('grunt-contrib-jade');
@@ -95,7 +107,7 @@ module.exports = function(grunt) {
 	grunt.registerTask(
 		'javascript',
 		'Compile scripts.',
-		['browserify']
+		['browserify', 'uglify']
 	);
 
 	grunt.registerTask(

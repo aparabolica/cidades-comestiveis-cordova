@@ -14,7 +14,8 @@ angular.module('cc')
 	'CCAuth',
 	'$timeout',
 	'$cordovaOauth',
-	function(Auth, $timeout, $cordovaOauth) {
+	'$rootScope',
+	function(Auth, $timeout, $cordovaOauth, $rootScope) {
 
 		var callback;
 
@@ -26,10 +27,10 @@ angular.module('cc')
 				login: function(cb) {
 					callback = cb;
 					if(!Auth.getToken()) {
-						$cordovaOauth.facebook('600003230102349', ['email','photos']).then(function(auth) {
-							console.log(auth);
+						$cordovaOauth.facebook('600003230102349', ['email','user_photos']).then(function(auth) {
 							if(!Auth.getToken()) {
-								Auth.facebook(auth).then(function() {
+								Auth.facebook({authResponse: {access_token: auth.access_token}}).then(function() {
+									$rootScope.$broadcast('cc.loggedin');
 									if(typeof callback == 'function') {
 										$timeout(function() {
 											callback();
