@@ -11,6 +11,7 @@
   <plugin name="cordova-plugin-whitelist" version="1" />
   <plugin name="cordova-plugin-geolocation" version="1" />
   <plugin name="cordova-plugin-inappbrowser" version="1" />
+  <plugin name="cordova-plugin-statusbar" version="1" />
   <plugin name="org.apache.cordova.splashscreen" version="1" />
   <access origin="*" />
   <allow-intent href="http://*/*" />
@@ -36,4 +37,6 @@
   </platform>
   <preference name="SplashScreen" value="screen" />
   <preference name="SplashScreenDelay" value="3000" />
+  <preference name="StatusBarOverlaysWebView" value="false" />
+  <preference name="StatusBarBackgroundColor" value="#ff6600" />
 </widget>
